@@ -15,7 +15,9 @@ symfony console make:entity->migration->migrate         --> Mettre à jour une e
 symfony console make:form                               --> Créer un Formulaire
                                                         --> Gérer le hashage des mots de passe
 
+########## CONNEXION ##########
 
+symfony console make:auth
 
 ********************************************************************************************************************************************************
 
