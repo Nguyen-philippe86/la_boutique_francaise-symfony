@@ -2,7 +2,7 @@ symfony new myproject --full                            --> Installer Symfony
                                                         --> Changer la DATA_URL sur sqlite dans le fichier .env
 symfony console make:controller                         --> Créer un Controller
 
-########## ESPACE MEMBRES ##########
+########## INSCRIPTION ##########
 
 symfony console make:user                               --> Créer une entité user pour stocker ses informations
                                                         --> Modifier les info du serveur mysql = root:root@127.0.0.1:8889/myproject?serverVersion=5.7
@@ -17,7 +17,11 @@ symfony console make:form                               --> Créer un Formulaire
 
 ########## CONNEXION ##########
 
-symfony console make:auth
+symfony console make:auth                               --> Créer une page de connexion, Gerer la route après l'athentification dans le security
+
+########## ESPACE MEMBRE ##########
+
+                                                        --> Créer un controller dédié
 
 ********************************************************************************************************************************************************
 
