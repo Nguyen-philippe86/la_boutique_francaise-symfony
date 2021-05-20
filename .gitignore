@@ -1,5 +1,5 @@
 .env
-.PROCESS.md
+PROCESS.md
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
