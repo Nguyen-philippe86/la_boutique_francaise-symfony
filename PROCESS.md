@@ -25,7 +25,8 @@ symfony console make:auth                               --> Créer une page de c
 
 ########## EASY ADMIN ##########         
 
-symfony console make:form                               --> Installer le bundle EasyAdmin3
+composer require easycorp/easyadmin-bundle              --> Installer le bundle EasyAdmin3
+symfony console make:admin:dashboard                    --> Creér un dashboard
 
 ********************************************************************************************************************************************************
 
