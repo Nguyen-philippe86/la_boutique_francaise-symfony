@@ -12,7 +12,7 @@ symfony console doctrine:migrations:migrate             --> Lance la migration p
 
 symfony console make:entity->migration->migrate         --> Mettre à jour une entité
 
-symfony console make:form                               --> Créer un Formulaire
+symfony console make:form                               --> Créer un Formulaire, puis créer la condition dans le controller
                                                         --> Gérer le hashage des mots de passe
 
 ########## CONNEXION ##########
@@ -22,6 +22,10 @@ symfony console make:auth                               --> Créer une page de c
 ########## ESPACE MEMBRE ##########
 
                                                         --> Créer un controller dédié
+
+########## EASY ADMIN ##########         
+
+symfony console make:form                               --> Installer le bundle EasyAdmin3
 
 ********************************************************************************************************************************************************
 
