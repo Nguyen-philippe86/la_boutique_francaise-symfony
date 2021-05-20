@@ -27,6 +27,7 @@ symfony console make:auth                               --> Créer une page de c
 
 composer require easycorp/easyadmin-bundle              --> Installer le bundle EasyAdmin3
 symfony console make:admin:dashboard                    --> Creér un dashboard
+symfony console make:admin:crud                         --> Créer le CRUD d'administration avec toute les tables (Ne pas oublier la méthode __toString pour l'association des tables)
 
 ********************************************************************************************************************************************************
 
