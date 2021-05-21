@@ -9,6 +9,7 @@ body{
     position: absolute;
     width: 100%;
     background-color: #dfeaff;
+    margin-top: 100px;
     padding: 5px;
 }
 .product-item h5{
