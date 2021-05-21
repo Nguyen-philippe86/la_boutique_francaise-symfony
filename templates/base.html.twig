@@ -51,6 +51,9 @@
                         </li>
                     </ul>
                     <div class="navbar-item-custom">
+                        <a href="{{ path('cart') }}">
+                            <img src="{{ asset('assets/img/shopping-cart.png') }}" class="cart-icon" alt="Mon panier">
+                        </a>
                         {% if app.user %}
                             <a href="{{ path('account') }}">Mon compte <small>({{ app.user.firstname }})</small></a> | <a href="{{ path('app_logout') }}">Deconnexion</a>
                         {% else %}
