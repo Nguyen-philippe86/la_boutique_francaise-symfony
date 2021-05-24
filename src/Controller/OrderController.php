@@ -85,7 +85,7 @@ class OrderController extends AbstractController
                 $orderDetail->setTotal($product['product']->getPrice() * $product['quantity']);
                 $this->entityManager->persist($orderDetail);
             }
-            // $this->entityManager->flush();
+            $this->entityManager->flush();
 
             return $this->render('order/add.html.twig', [
                 'cart' => $cart->getFull(),
