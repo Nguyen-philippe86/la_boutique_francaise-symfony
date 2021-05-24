@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class OrderValidateController extends AbstractController
+class OrderCancelController extends AbstractController
 {
     private $entityManager;
 
@@ -18,7 +18,7 @@ class OrderValidateController extends AbstractController
     }
 
     /**
-     * @Route("/commande/merci/{stripeSessionId}", name="order_validate")
+     * @Route("/commande/erreur/{stripeSessionId}", name="order_cancel")
      *
      * @param mixed $stripeSessionId
      */
@@ -29,12 +29,8 @@ class OrderValidateController extends AbstractController
         if (!$order || $order->getUser() != $this->getUser()) {
             return $this->redirectToRoute('home');
         }
-        if (!$order->getisPaid()) {
-            $order->setIsPaid(1);
-            $this->entityManager->flush();
-        }
 
-        return $this->render('order_validate/order_validate.html.twig', [
+        return $this->render('order_cancel/order_cancel.html.twig', [
             'order' => $order,
         ]);
     }
