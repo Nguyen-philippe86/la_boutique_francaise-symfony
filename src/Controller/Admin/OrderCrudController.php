@@ -37,11 +37,13 @@ class OrderCrudController extends AbstractCrudController
     public function configureActions(Actions $actions): Actions
     {
         $updatePreparation = Action::new('updatePreparation', 'Préparation en cours', 'fas fa-box-open')->linkToCrudAction('updatePreparation');
-        $updateDelivery = Action::new('updateDelivery', 'Livraison en cours', 'fas fa-truck')->linkToCrudAction('updateDelivery');
+        $updateDelivery = Action::new('updateDelivery', 'Livraison en cours |', 'fas fa-truck')->linkToCrudAction('updateDelivery');
+        $delivery = Action::new('delivery', 'Livrée |', 'fas fa-check-circle')->linkToCrudAction('delivery');
 
         return $actions
             ->add('detail', $updatePreparation)
             ->add('detail', $updateDelivery)
+            ->add('detail', $delivery)
             ->add('index', 'detail')
         ;
     }
@@ -52,7 +54,7 @@ class OrderCrudController extends AbstractCrudController
         $order->setState(2);
         $this->entityManager->flush();
 
-        $this->addFlash('notice', "<span style='color:green;'><strong>La commande ".$order->getReference().' est bien <u>en cours de préparation</u>.</strong></span>');
+        $this->addFlash('notice', "<span style='color:orangered;'><strong>La commande ".$order->getReference().' est bien <u>en cours de préparation</u>.</strong></span>');
 
         $url = $this->crudUrlGenerator->build()
             ->setController(OrderCrudController::class)
@@ -70,6 +72,23 @@ class OrderCrudController extends AbstractCrudController
         $this->entityManager->flush();
 
         $this->addFlash('notice', "<span style='color:orange;'><strong>La commande ".$order->getReference().' est bien <u>en cours de livraison</u>.</strong></span>');
+
+        $url = $this->crudUrlGenerator->build()
+            ->setController(OrderCrudController::class)
+            ->setAction('index')
+            ->generateUrl()
+        ;
+
+        return $this->redirect($url);
+    }
+
+    public function Delivery(AdminContext $context)
+    {
+        $order = $context->getEntity()->getInstance();
+        $order->setState(4);
+        $this->entityManager->flush();
+
+        $this->addFlash('notice', "<span style='color:green;'><strong>La commande ".$order->getReference().' est bien <u>livrée</u>.</strong></span>');
 
         $url = $this->crudUrlGenerator->build()
             ->setController(OrderCrudController::class)
@@ -100,6 +119,7 @@ class OrderCrudController extends AbstractCrudController
                 'Payée' => 1,
                 'Préparation en cours' => 2,
                 'Livraison en cours' => 3,
+                'Livrée' => 4,
             ]),
 
             ArrayField::new('order_details', 'Produits achetés')->hideOnIndex(),
